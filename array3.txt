@@ -1,0 +1,30 @@
+;
+;
+;
+
+	.data
+array:	.word	8	;beginning of array
+	.word	15	; .word is 64 bits
+	.word	32
+	.word	27
+	.word	13
+	.word	10
+	.word	7
+enda:	.word	0
+
+
+
+	.code
+
+
+	DADDI	R4,R0,array	;R4 STARTS AT Array
+	DADDI	R3,R0,enda	;R3 At End of Array
+	DADD	R5,R0,R0	;R5 (SUM)
+LOOP:	LD	R6,0(R4)	;GET THE WORD
+	DADDI	R4,R4,8		;increment by 8
+	DADD	R5,R5,R6	;ADD IT
+	BEQ	R4,R3,DONE	;JuMP AROUND IF DON
+	J	LOOP
+DONE:	SYSCALL	0
+
+	

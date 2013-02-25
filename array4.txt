@@ -1,0 +1,28 @@
+;
+;
+;
+
+	.data
+array:	.word	8	;beginning of array
+	.word	15	; .word is 64 bits
+	.word	32
+	.word	27
+	.word	13
+	.word	10
+	.word	7
+count:	.word	7
+
+
+
+	.code
+
+
+	DADDI	R4,R0,array	;R4 STARTS AT Array
+	LD	R3,count(R0)	;R3 has count
+	DADD	R5,R0,R0	;R5 (SUM)
+LOOP:	LD	R6,0(R4)	;GET THE WORD
+	DADDI	R3,R3,-1
+	DADDI	R4,R4,8		;increment by 8
+	DADD	R5,R5,R6	;ADD IT
+	BNE	R3,R0,LOOP	;JUMP BACK IF NOT EQUAL
+	
