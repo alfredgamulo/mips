@@ -15,11 +15,11 @@ enda:	.word	0
 
 .code
 
-loop:
 		DADDI	$a0,$0,array
+		DADDI	$a3,$0,enda
+loop:
 		DADDI	$a1,$0,array	;pointer 1
 		DADDI	$a2,$0,p2		;pointer 2
-		DADDI	$a3,$0,enda
 		DADD	$t4,$0,$0		;reset swap counter
 load:	
 		LD 		$t1, 0($a1)		;$t1 is first param	
@@ -40,6 +40,9 @@ final:
 		DADDI	$a2, $a2, 8
 		BNE		$a1, $a3, load
 		
-while:	BNE		$t4, $0, loop	;swap occured, start over.
-		SYSCALL 0
+while:
+		DADDI	$a3, $a3, -8
+		BEQ		$a3, $a0, end
+		BNE		$t4, $0, loop	;swap occured, start over.
+end:	SYSCALL 0
 		
