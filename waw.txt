@@ -1,0 +1,22 @@
+; Alfred Gamulo
+; CSC6461
+; Program Assignment 1
+
+.data
+
+var0:	.word	9
+var1:	.double	88.6235
+
+.text
+ldc1 f0,var1(r0)
+
+.code
+		
+		ADD.D	f0,f0,f0
+		MUL.D	f0,f0,f0
+		ADD.D	f0,f0,f0
+		
+
+
+		
+
